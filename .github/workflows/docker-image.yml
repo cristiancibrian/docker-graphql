@@ -26,10 +26,15 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     
     - name: Build Docker Image
-      run: docker build -t cristiancibrian/docker-graphql:0.0.2 .
+      run: |
+        docker build -t cristiancibrian/docker-graphql:0.0.2 .
+        docker build -t cristiancibrian/docker-graphql:latest .
+
 
     - name: Push Docker Image
-      run: docker push cristiancibrian/docker-graphql:0.0.2
+      run: |
+        docker push cristiancibrian/docker-graphql:0.0.2
+        docker push cristiancibrian/docker-graphql:latest
 
     #- name: Build the Docker image
      # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
